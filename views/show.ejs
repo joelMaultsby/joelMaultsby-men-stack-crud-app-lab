@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= plant.name %> Details</title>
+</head>
+<body>
+  <h1><%= plant.name %></h1>
+
+  <p><strong>Plant Description:</strong> <%= plant.description %></p>
+
+  <% if (plant.image) { %>
+    <img src="<%= plant.image %>" alt="<%= plant.name %>" width="200">
+  <% } %>
+
+  <br><br>
+  <a href="/plants">Back to Home</a>
+</body>
+</html>
