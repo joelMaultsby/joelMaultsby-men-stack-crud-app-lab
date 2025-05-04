@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Landing Page</title>
+  <meta charset="UTF-8">
+  <title>List of All Plants</title>
 </head>
 <body>
-  <h1>Welcome to the Landing Page!</h1>
-  <p>This is a test of the EJS view engine.</p>
+  <h1>List of All Plants</h1>
+
+  <a href="/plants/new">Add a New Plant</a>
+  <br><br>
+
+  <% if (plants.length === 0) { %>
+    <p>No plants found</p>
+  <% } else { %>
+    <ul>
+      <% plants.forEach(plant => { %>
+        <li>
+          <strong><%= plant.name %></strong><br>
+          <em><%= plant.description %></em><br>
+
+          <% if (plant.image) { %>
+            <img src="<%= plant.image %>" alt="<%= plant.name %>" width="100"><br>
+          <% } %>
+
+          <a href="/plants/<%= plant._id %>">View</a> |
+          <a href="/plants/<%= plant._id %>/edit">Edit</a> |
+
+          <form action="/plants/<%= plant._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this plant?');">
+            <button type="submit">Delete</button>
+          </form>
+
+          <br><br>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <br>
+
 </body>
 </html>
