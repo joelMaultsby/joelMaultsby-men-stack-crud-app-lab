@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit a Plant</title>
+</head>
+<body>
+  <h1>Edit Existing Plant: <%= plant.name %></h1>
+  <form action="/plants/<%= plant._id %>" method="POST">
+    <label for="name">Name of Plant:</label>
+    <input type="text" id="name" name="name" value="<%= plant.name %>" required><br><br>
+
+    <label for="description">Plant Description:</label>
+    <input type="text" id="description" name="description" value="<%= plant.description %>" required><br><br>
+
+    <label for="image">URL:</label>
+    <input type="text" id="image" name="image" value="<%= plant.image %>"><br><br>
+
+    <button type="submit">Update Plant</button>
+  </form>
+
+  <br>
+  <a href="/plants">Back to Home</a>
+</body>
+</html>
